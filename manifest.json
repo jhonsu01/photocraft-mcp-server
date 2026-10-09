@@ -1,0 +1,122 @@
+{
+  "manifest_version": "0.3",
+  "name": "photocraft-mcp-server",
+  "version": "1.0.0",
+  "display_name": "PhotoCraft Bridge",
+  "description": "Edit photos (resize, crop, adjustments, Camera Raw, filters, remove background, text, shapes, layer styles), create designs and convert between PSD, TIFF, PNG, JPEG, WebP, EXR and more, using the PhotoCraft editor installed on Windows, macOS or Linux. Not affiliated with PhotoCraft or Storytold.",
+  "long_description": "PhotoCraft Bridge lets Claude edit images with the PhotoCraft you already have installed on Windows, macOS or Linux (tested with 0.5.0), the open-source, Photoshop-class editor written in Rust.\n\n- **Edit**: resize, crop, canvas size, rotate, flip, trim, auto tone / contrast / colour, adjustments (levels, curves, exposure, hue/saturation, black & white, colour balance, photo filter, vibrance...) as pixels or editable adjustment layers, Camera Raw, and 122 filters (blur, sharpen, noise, distort, stylize, artistic gallery...). One image, a list or a whole folder.\n- **Remove backgrounds**: cut out the subject to a transparent PNG, cropped or on a new colour, or keep the editable mask in a PSD.\n- **Create**: social posts, banners, thumbnails and collages from fill and gradient layers, shapes, text with any font, placed photos and logos, and layer styles (drop shadow, stroke, glow, bevel...).\n- **Convert**: PSD, PSB, layered or flat TIFF, PNG, JPEG, WebP, GIF, BMP, TGA, ICO, QOI, OpenEXR, HDR and the native .pcraft; reads HEIC, SVG and Affinity files too.\n- **Preview** any file, inspect its layers, and run any of PhotoCraft's 817 commands, headless or in the open app.\n\nThe connector drives PhotoCraft's own headless engine (photocraft-cli) on copies of your files and never touches an open PhotoCraft window unless you ask. Everything runs locally with no network access; files are never overwritten unless you ask. PhotoCraft is an open-source project by Storytold; this connector is not affiliated with or endorsed by them.",
+  "author": {
+    "name": "Jhon Supelano",
+    "url": "https://github.com/jhonsu01"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/jhonsu01/photocraft-mcp-server.git"
+  },
+  "homepage": "https://github.com/jhonsu01/photocraft-mcp-server",
+  "support": "https://github.com/jhonsu01/photocraft-mcp-server/issues",
+  "icon": "icon.png",
+  "server": {
+    "type": "node",
+    "entry_point": "dist/bundle.cjs",
+    "mcp_config": {
+      "command": "node",
+      "args": [
+        "${__dirname}/dist/bundle.cjs"
+      ],
+      "env": {
+        "PHOTOCRAFT_DIR": "${user_config.photocraft_dir}",
+        "PHOTOCRAFT_CLI": "${user_config.photocraft_cli}",
+        "PHOTOCRAFT_CONTROL_PORT": "${user_config.control_port}"
+      }
+    }
+  },
+  "user_config": {
+    "photocraft_dir": {
+      "type": "directory",
+      "title": "PhotoCraft folder",
+      "description": "Install folder of PhotoCraft (or PhotoCraft.app on macOS). Leave empty to auto-detect: C:Program FilesPhotoCraft, /Applications/PhotoCraft.app, /usr/bin, /opt/photocraft or PATH.",
+      "required": false
+    },
+    "photocraft_cli": {
+      "type": "file",
+      "title": "photocraft-cli executable (optional)",
+      "description": "Only if it is somewhere else, e.g. where you unzipped photocraft-cli-<version>-macos-universal.zip on macOS.",
+      "required": false
+    },
+    "control_port": {
+      "type": "string",
+      "title": "PhotoCraft control port (optional)",
+      "description": "Port used to drive the PhotoCraft app (run_photo_commands live). Default 7878.",
+      "required": false
+    }
+  },
+  "compatibility": {
+    "platforms": [
+      "win32",
+      "darwin",
+      "linux"
+    ],
+    "runtimes": {
+      "node": ">=20.0.0"
+    }
+  },
+  "tools": [
+    {
+      "name": "get_image_info",
+      "description": "Size, mode, depth, resolution, layer tree, text and fonts"
+    },
+    {
+      "name": "convert_image",
+      "description": "Convert between PSD, TIFF, PNG, JPEG, WebP, EXR and more, in batches"
+    },
+    {
+      "name": "edit_image",
+      "description": "Resize, crop, adjustments, Camera Raw, filters, text, logos, styles"
+    },
+    {
+      "name": "create_image",
+      "description": "New designs from gradients, shapes, text, photos and layer styles"
+    },
+    {
+      "name": "remove_background",
+      "description": "Cut out the subject: transparent, trimmed or on a colour"
+    },
+    {
+      "name": "render_preview",
+      "description": "Render any image or document to PNG and show it"
+    },
+    {
+      "name": "list_photo_catalog",
+      "description": "Commands, filters, adjustments, layer styles, presets, formats"
+    },
+    {
+      "name": "run_photo_commands",
+      "description": "Run any PhotoCraft engine commands, headless or in the live app"
+    },
+    {
+      "name": "open_in_photocraft",
+      "description": "Open images in the PhotoCraft app"
+    },
+    {
+      "name": "get_photocraft_status",
+      "description": "Check the PhotoCraft installation and version"
+    }
+  ],
+  "keywords": [
+    "photocraft",
+    "photoshop",
+    "photo",
+    "image",
+    "psd",
+    "remove-background",
+    "filters",
+    "batch",
+    "webp",
+    "tiff",
+    "windows",
+    "macos",
+    "linux"
+  ],
+  "license": "Apache-2.0"
+}

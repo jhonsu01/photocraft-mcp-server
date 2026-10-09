@@ -1,0 +1,59 @@
+{
+  "name": "photocraft-mcp-server",
+  "version": "1.0.0",
+  "description": "MCP server for PhotoCraft: edit photos (resize, crop, adjustments, Camera Raw, 123 filters, remove background, text, shapes, layer styles), create designs and convert between PSD, TIFF, PNG, JPEG, WebP, EXR and more with PhotoCraft's own engine, from Claude (Windows, macOS, Linux).",
+  "type": "module",
+  "main": "dist/index.js",
+  "bin": {
+    "photocraft-mcp-server": "dist/index.js"
+  },
+  "files": [
+    "dist/**/*"
+  ],
+  "scripts": {
+    "build": "tsc && node scripts/bundle.mjs",
+    "start": "node dist/index.js",
+    "test": "vitest run",
+    "test:e2e": "node scripts/e2e.mjs",
+    "pack:mcpb": "npm run build && npx -y @anthropic-ai/mcpb pack . photocraft-mcp-server.mcpb"
+  },
+  "keywords": [
+    "mcp",
+    "model-context-protocol",
+    "photocraft",
+    "photoshop",
+    "photo-editing",
+    "image-editing",
+    "psd",
+    "remove-background",
+    "filters",
+    "batch",
+    "windows",
+    "macos",
+    "linux"
+  ],
+  "author": "Jhon Supelano (https://github.com/jhonsu01)",
+  "license": "Apache-2.0",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/jhonsu01/photocraft-mcp-server.git"
+  },
+  "engines": {
+    "node": ">=20.0.0"
+  },
+  "os": [
+    "win32",
+    "darwin",
+    "linux"
+  ],
+  "dependencies": {
+    "@modelcontextprotocol/sdk": "^1.32.1",
+    "zod": "^4.6.5"
+  },
+  "devDependencies": {
+    "@types/node": "^22.20.5",
+    "esbuild": "^0.28.2",
+    "typescript": "^5.9.3",
+    "vitest": "^5.0.3"
+  }
+}
