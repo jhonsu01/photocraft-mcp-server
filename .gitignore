@@ -51,3 +51,4 @@ pruebas/
 *.token
 !icon.png
 NVIDIA Corporation/
+*.zip

@@ -1,7 +1,7 @@
 {
   "manifest_version": "0.3",
   "name": "photocraft-mcp-server",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "display_name": "PhotoCraft Bridge",
   "description": "Edit photos (resize, crop, adjustments, Camera Raw, filters, remove background, text, shapes, layer styles), create designs and convert between PSD, TIFF, PNG, JPEG, WebP, EXR and more, using the PhotoCraft editor installed on Windows, macOS or Linux. Not affiliated with PhotoCraft or Storytold.",
   "long_description": "PhotoCraft Bridge lets Claude edit images with the PhotoCraft you already have installed on Windows, macOS or Linux (tested with 0.5.0), the open-source, Photoshop-class editor written in Rust.\n\n- **Edit**: resize, crop, canvas size, rotate, flip, trim, auto tone / contrast / colour, adjustments (levels, curves, exposure, hue/saturation, black & white, colour balance, photo filter, vibrance...) as pixels or editable adjustment layers, Camera Raw, and 122 filters (blur, sharpen, noise, distort, stylize, artistic gallery...). One image, a list or a whole folder.\n- **Remove backgrounds**: cut out the subject to a transparent PNG, cropped or on a new colour, or keep the editable mask in a PSD.\n- **Create**: social posts, banners, thumbnails and collages from fill and gradient layers, shapes, text with any font, placed photos and logos, and layer styles (drop shadow, stroke, glow, bevel...).\n- **Convert**: PSD, PSB, layered or flat TIFF, PNG, JPEG, WebP, GIF, BMP, TGA, ICO, QOI, OpenEXR, HDR and the native .pcraft; reads HEIC, SVG and Affinity files too.\n- **Preview** any file, inspect its layers, and run any of PhotoCraft's 817 commands, headless or in the open app.\n\nThe connector drives PhotoCraft's own headless engine (photocraft-cli) on copies of your files and never touches an open PhotoCraft window unless you ask. Everything runs locally with no network access; files are never overwritten unless you ask. PhotoCraft is an open-source project by Storytold; this connector is not affiliated with or endorsed by them.",
@@ -35,7 +35,7 @@
     "photocraft_dir": {
       "type": "directory",
       "title": "PhotoCraft folder",
-      "description": "Install folder of PhotoCraft (or PhotoCraft.app on macOS). Leave empty to auto-detect: C:Program FilesPhotoCraft, /Applications/PhotoCraft.app, /usr/bin, /opt/photocraft or PATH.",
+      "description": "Install folder of PhotoCraft (or PhotoCraft.app on macOS). Leave empty to auto-detect: C:\\Program Files\\PhotoCraft, /Applications/PhotoCraft.app, /usr/bin, /opt/photocraft or PATH.",
       "required": false
     },
     "photocraft_cli": {

@@ -5,7 +5,7 @@ import { z } from 'zod';
 import { PhotoCraftSession, withSession } from '../engine.js';
 import {
   LAYERED, READ, WRITABLE, WRITE, WritableFormat, collectInputs, colorSchema, defaultFormat, errorResult, formatsSchema, inputsOf,
-  inputsSchema, json, outputFor, preview, saveAll, saveOptionsSchema, Saved, summarizeLayers, withPreview,
+  inputsSchema, json, nameStem, outputFor, preview, saveAll, saveOptionsSchema, Saved, summarizeLayers, withPreview,
 } from './common.js';
 
 // ---------------------------------------------------------------- operations
@@ -595,7 +595,7 @@ export function registerImageTools(server: McpServer): void {
           const doc: number = created?.document ?? 0;
           if (args.resolution) await s.cmd('image.imageSize', { resolution: args.resolution, resample: 'none' });
           const applied = brief(await applyOps(s, args.operations, { doc, log: [] }));
-          const outputs = await saveAll(s, { input: path.join(dir, args.name), suffix: '', output_dir: dir, output_path: args.output_path, overwrite: args.overwrite }, args.formats, args);
+          const outputs = await saveAll(s, { input: path.join(dir, `${nameStem(args.name)}.__src`), suffix: '', output_dir: dir, output_path: args.output_path, overwrite: args.overwrite }, args.formats, args);
           const flat = args.formats.filter((f) => !LAYERED.includes(f));
           return withPreview(
             { success: true, size: [args.width, args.height], applied, outputs, ...(flat.length && !args.formats.some((f) => LAYERED.includes(f)) ? { note: 'Flat formats only: add psd or pcraft to keep the layers editable.' } : {}) },

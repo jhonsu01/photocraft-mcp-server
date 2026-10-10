@@ -100,6 +100,14 @@
 2. 더블클릭(또는 Claude Desktop → *설정 → 확장 프로그램*으로 끌어다 놓기)한 뒤 **설치**를 클릭합니다.
 3. 선택: PhotoCraft가 표준 위치에 없다면 확장 프로그램 설정에서 해당 폴더나 `photocraft-cli` 경로를 입력합니다.
 
+### Codex (OpenAI)
+
+**권장 — 마켓플레이스(업데이트 받음):** *플러그인 → 추가 → 마켓플레이스 추가*에서 소스 `jhonsu01/craft-marketplace`, 참조 `main`을 지정한 뒤 **Craft Bridges**에서 **PhotoCraft Bridge**를 설치합니다([craft-marketplace](https://github.com/jhonsu01/craft-marketplace)). 마켓플레이스를 새로 고치면 새 버전이 설치됩니다. 또는 zip을 업로드합니다(Codex는 계정에 저장하고 같은 이름의 새 zip은 거부합니다):
+
+1. [최신 릴리스](https://github.com/jhonsu01/photocraft-mcp-server/releases/latest)에서 `photocraft-mcp-server-<버전>-codex.zip`을 내려받습니다.
+2. Codex에서 *플러그인 → 추가 → 새 플러그인*을 열고 zip을 선택한 뒤 **플러그인 추가**를 누릅니다.
+3. Codex는 `node`로 서버를 시작하므로 `PATH`에 Node.js ≥ 20이 있어야 합니다. PhotoCraft가 표준 위치에 없다면 `PHOTOCRAFT_DIR` 또는 `PHOTOCRAFT_CLI`를 시스템 환경 변수로 설정하세요(Codex에는 로컬 플러그인용 설정 화면이 없습니다).
+
 ### Claude Code / 기타 MCP 클라이언트
 
 ```bash
@@ -142,8 +150,9 @@ claude mcp add photocraft -- node "$PWD/dist/bundle.cjs"
 ```bash
 npm run build       # TypeScript + 단일 파일 번들(dist/bundle.cjs)
 npm test            # 단위 테스트(Windows, macOS, Linux 경로 로직)
-npm run test:e2e    # 실제 MCP stdio를 통한 22개 엔드투엔드 검사(합성 이미지)
+npm run test:e2e    # 실제 MCP stdio를 통한 23개 엔드투엔드 검사(합성 이미지)
 npm run pack:mcpb   # photocraft-mcp-server.mcpb
+npm run pack:codex  # Codex 플러그인 zip
 ```
 
 Docker에서 Linux 테스트(먼저 `photocraft-<버전>-linux-x86_64.tar.gz` 압축 해제):

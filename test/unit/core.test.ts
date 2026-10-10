@@ -6,7 +6,7 @@ import { z } from 'zod';
 import { cleanEnv, connectorDir, resolveInstall, resolveInt } from '../../src/config.js';
 import { resolveOutputPath, sameFile } from '../../src/paths.js';
 import { substitute } from '../../src/tools/advanced.js';
-import { collectInputs, defaultFormat, formatOfPath } from '../../src/tools/common.js';
+import { collectInputs, defaultFormat, formatOfPath, nameStem } from '../../src/tools/common.js';
 import { filterId, operationSchema } from '../../src/tools/image.js';
 
 describe('config', () => {
@@ -45,6 +45,12 @@ describe('config', () => {
 });
 
 describe('paths and formats', () => {
+  it('keeps dots in output names, dropping only a real extension', () => {
+    expect(nameStem('banner-1.0.1')).toBe('banner-1.0.1');
+    expect(nameStem('post.2026')).toBe('post.2026');
+    expect(nameStem('portada.png')).toBe('portada');
+    expect(nameStem('Diseño final.PSD')).toBe('Diseño final');
+  });
   it('never overwrites, POSIX case-sensitive', () => {
     const exists = (p: string) => p === 'D:\\a\\foto.png';
     expect(resolveOutputPath({ inputPath: 'D:\\a\\foto.jpg', ext: 'png', exists, platform: 'win32' })).toEqual({ path: 'D:\\a\\foto_2.png' });

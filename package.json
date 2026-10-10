@@ -1,6 +1,6 @@
 {
   "name": "photocraft-mcp-server",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "MCP server for PhotoCraft: edit photos (resize, crop, adjustments, Camera Raw, 123 filters, remove background, text, shapes, layer styles), create designs and convert between PSD, TIFF, PNG, JPEG, WebP, EXR and more with PhotoCraft's own engine, from Claude (Windows, macOS, Linux).",
   "type": "module",
   "main": "dist/index.js",
@@ -15,7 +15,8 @@
     "start": "node dist/index.js",
     "test": "vitest run",
     "test:e2e": "node scripts/e2e.mjs",
-    "pack:mcpb": "npm run build && npx -y @anthropic-ai/mcpb pack . photocraft-mcp-server.mcpb"
+    "pack:mcpb": "npm run build && npx -y @anthropic-ai/mcpb pack . photocraft-mcp-server.mcpb",
+    "pack:codex": "npm run build && node scripts/pack-codex.mjs"
   },
   "keywords": [
     "mcp",
@@ -55,5 +56,15 @@
     "esbuild": "^0.28.2",
     "typescript": "^5.9.3",
     "vitest": "^5.0.3"
+  },
+  "codex": {
+    "shortDescription": "Edit photos and create images with your local PhotoCraft",
+    "category": "Design",
+    "brandColor": "#2563EB",
+    "defaultPrompt": [
+      "Remove the background of this photo and make it white",
+      "Resize every image in this folder to 1080 px and export WebP",
+      "Create a 1080x1080 social post with my logo and a title"
+    ]
   }
 }

@@ -178,6 +178,9 @@ check(!bad.success && /ambient|disabled/.test(JSON.stringify(bad)), 'file comman
 const shapeBlur = await call('create_image', { name: 'x', width: 200, height: 200, operations: [{ op: 'shape', x: 10, y: 10, width: 50, height: 50 }, { op: 'filter', id: 'blur.gaussianBlur' }], output_dir: join(out, 'x') });
 check(!shapeBlur.success && /flatten/.test(shapeBlur.error ?? ''), 'a filter on a shape layer explains how to fix it');
 
+const dotted = await call('create_image', { name: 'banner-1.0.1', width: 120, height: 60, background: '#336699', formats: ['png', 'jpg'], output_dir: join(out, 'dots'), preview: false });
+check(dotted.success && dotted.outputs?.every((o) => /banner-1\.0\.1\.(png|jpg)$/.test(o.path) && existsSync(o.path)), `create_image: dots in the name are kept (${dotted.outputs?.map((o) => o.path.split(/[\\/]/).pop()).join(', ')})`);
+
 const relPath = await call('edit_image', { input_path: 'foto.png', operations: [{ op: 'flatten' }] });
 check(!relPath.success && /absolute/.test(relPath.error ?? ''), 'relative paths are rejected');
 

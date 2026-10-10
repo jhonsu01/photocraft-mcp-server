@@ -100,6 +100,14 @@
 2. Дважды щёлкните по нему (или перетащите в Claude Desktop → *Настройки → Расширения*) и нажмите **Установить**.
 3. Необязательно: если PhotoCraft установлен не в стандартное место, укажите его папку или путь к `photocraft-cli` в настройках расширения.
 
+### Codex (OpenAI)
+
+**Рекомендуется — маркетплейс (получает обновления):** *Плагины → Добавить → Добавить маркетплейс*, источник `jhonsu01/craft-marketplace`, ссылка `main`, затем установите **PhotoCraft Bridge** из **Craft Bridges** ([craft-marketplace](https://github.com/jhonsu01/craft-marketplace)). Новые версии приходят при обновлении маркетплейса. Или загрузите zip (Codex сохранит его в вашей учётной записи и отклонит более новый zip с тем же именем):
+
+1. Скачайте `photocraft-mcp-server-<версия>-codex.zip` из [последнего релиза](https://github.com/jhonsu01/photocraft-mcp-server/releases/latest).
+2. В Codex: *Плагины → Добавить → Новый плагин*, выберите zip и нажмите **Добавить плагин**.
+3. Codex запускает сервер через `node`, поэтому Node.js ≥ 20 должен быть в `PATH`. Если PhotoCraft установлен не в стандартное место, задайте `PHOTOCRAFT_DIR` или `PHOTOCRAFT_CLI` как системные переменные окружения (у Codex нет формы настроек для локальных плагинов).
+
 ### Claude Code / другие MCP-клиенты
 
 ```bash
@@ -142,8 +150,9 @@ claude mcp add photocraft -- node "$PWD/dist/bundle.cjs"
 ```bash
 npm run build       # TypeScript + бандл в один файл (dist/bundle.cjs)
 npm test            # модульные тесты (логика путей Windows, macOS и Linux)
-npm run test:e2e    # 22 сквозные проверки через реальный MCP stdio (синтетические изображения)
+npm run test:e2e    # 23 сквозные проверки через реальный MCP stdio (синтетические изображения)
 npm run pack:mcpb   # photocraft-mcp-server.mcpb
+npm run pack:codex  # zip-плагин для Codex
 ```
 
 Проверка Linux в Docker (сначала распакуйте `photocraft-<версия>-linux-x86_64.tar.gz`):

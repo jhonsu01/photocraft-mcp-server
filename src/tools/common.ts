@@ -144,6 +144,13 @@ export interface Saved {
   warnings: string[];
 }
 
+/** A file name given by the user: kept as is (dots included), except a trailing image extension. */
+export function nameStem(name: string): string {
+  const exts = new Set<string>([...Object.values(WRITABLE), 'tiff', 'jpeg']);
+  const m = /\.([^.\\/]+)$/.exec(name);
+  return m && exts.has(m[1].toLowerCase()) ? name.slice(0, -m[0].length) : name;
+}
+
 /**
  * Save the active document once per format: output_path for the format matching its extension,
  * the others as <output_dir or input folder>/<stem><suffix>.<ext>, never replacing anything.

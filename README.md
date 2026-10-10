@@ -100,6 +100,14 @@ Coordinates are **pixels from the top-left corner**. Adjustments and filters act
 2. Double-click it (or drag it into Claude Desktop → *Settings → Extensions*) and click **Install**.
 3. Optional: if PhotoCraft is not in a standard location, fill in its folder or the `photocraft-cli` path in the extension settings.
 
+### Codex (OpenAI)
+
+**Recommended — the marketplace (gets updates):** *Plugins → Add → Add marketplace*, source `jhonsu01/craft-marketplace`, reference `main`, then install **PhotoCraft Bridge** from **Craft Bridges** ([craft-marketplace](https://github.com/jhonsu01/craft-marketplace)). New versions arrive by refreshing the marketplace. Or upload the zip (Codex then keeps it in your account and refuses a newer zip with the same name):
+
+1. Download `photocraft-mcp-server-<version>-codex.zip` from the [latest release](https://github.com/jhonsu01/photocraft-mcp-server/releases/latest).
+2. In Codex: *Plugins → Add → New plugin*, choose the zip and click **Add plugin**.
+3. Codex starts the server with `node`, so Node.js ≥ 20 must be on `PATH`. If PhotoCraft is not in a standard location, set `PHOTOCRAFT_DIR` or `PHOTOCRAFT_CLI` as system environment variables (Codex has no settings form for local plugins).
+
 ### Claude Code / other MCP clients
 
 ```bash
@@ -142,8 +150,9 @@ claude mcp add photocraft -- node "$PWD/dist/bundle.cjs"
 ```bash
 npm run build       # TypeScript + single-file bundle (dist/bundle.cjs)
 npm test            # unit tests (Windows, macOS and Linux path logic)
-npm run test:e2e    # 22 end-to-end checks over real MCP stdio (synthetic images)
+npm run test:e2e    # 23 end-to-end checks over real MCP stdio (synthetic images)
 npm run pack:mcpb   # photocraft-mcp-server.mcpb
+npm run pack:codex  # Codex plugin zip
 ```
 
 Linux test in Docker (unpack `photocraft-<version>-linux-x86_64.tar.gz` first):
