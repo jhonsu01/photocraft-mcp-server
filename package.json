@@ -1,6 +1,6 @@
 {
   "name": "photocraft-mcp-server",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "MCP server for PhotoCraft: edit photos (resize, crop, adjustments, Camera Raw, 123 filters, remove background, text, shapes, layer styles), create designs and convert between PSD, TIFF, PNG, JPEG, WebP, EXR and more with PhotoCraft's own engine, from Claude (Windows, macOS, Linux).",
   "type": "module",
   "main": "dist/index.js",
