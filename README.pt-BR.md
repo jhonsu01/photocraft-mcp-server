@@ -150,7 +150,7 @@ claude mcp add photocraft -- node "$PWD/dist/bundle.cjs"
 ```bash
 npm run build       # TypeScript + bundle de arquivo único (dist/bundle.cjs)
 npm test            # testes unitários (lógica de caminhos de Windows, macOS e Linux)
-npm run test:e2e    # 23 testes de ponta a ponta via MCP stdio real (imagens sintéticas)
+npm run test:e2e    # 24 testes de ponta a ponta via MCP stdio real (imagens sintéticas)
 npm run pack:mcpb   # photocraft-mcp-server.mcpb
 npm run pack:codex  # zip de plugin para o Codex
 ```

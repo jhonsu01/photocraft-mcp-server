@@ -150,7 +150,7 @@ claude mcp add photocraft -- node "$PWD/dist/bundle.cjs"
 ```bash
 npm run build       # TypeScript + 单文件打包（dist/bundle.cjs）
 npm test            # 单元测试（Windows、macOS、Linux 路径逻辑）
-npm run test:e2e    # 通过真实 MCP stdio 的 23 项端到端检查（合成图片）
+npm run test:e2e    # 通过真实 MCP stdio 的 24 项端到端检查（合成图片）
 npm run pack:mcpb   # photocraft-mcp-server.mcpb
 npm run pack:codex  # Codex 插件 zip
 ```
